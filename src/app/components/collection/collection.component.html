@@ -1,0 +1,35 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <div class="side-buttons">
+      <button mat-raised-button color="primary" routerLink="/home">Quadros</button>
+      <button mat-raised-button color="primary" routerLink="/favorite">Favoritos</button>
+      <button mat-raised-button color="primary" routerLink="/shared">Compartilhados</button>
+      <button mat-raised-button color="primary" routerLink="/collection">Coleções</button>
+    </div>
+  </mat-drawer>
+  <app-nav (change)="drawer.toggle()"></app-nav>
+  <div class="example-sidenav-content">
+    <main>
+      <button mat-raised-button color="primary" (click)="openDialogCollection()">
+        Criar coleção
+      </button>
+      <div class="container">
+        <div *ngFor="let colecao of usuario.colecoes; let i = index">
+          <mat-card class="card">
+            <mat-card-header>
+              <mat-card-title>{{colecao.titulo}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-actions class="actions">
+              <button mat-mini-fab color="warn" (click)="onDelete(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button mat-mini-fab color="primary" routerLink="/collection/{{i}}">
+                <mat-icon>remove_red_eye</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </main>
+  </div>
+</mat-drawer-container>

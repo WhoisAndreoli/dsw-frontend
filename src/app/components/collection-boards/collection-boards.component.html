@@ -1,0 +1,32 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <div class="side-buttons">
+      <button mat-raised-button color="primary" routerLink="/home">Quadros</button>
+      <button mat-raised-button color="primary" routerLink="/favorite">Favoritos</button>
+      <button mat-raised-button color="primary" routerLink="/shared">Compartilhados</button>
+      <button mat-raised-button color="primary" routerLink="/collection">Coleções</button>
+    </div>
+  </mat-drawer>
+  <app-nav (change)="drawer.toggle()"></app-nav>
+  <div class="example-sidenav-content">
+    <main>
+      <div class="container">
+        <div *ngFor="let quadro of usuario.colecoes[index].quadros; let i = index">
+          <mat-card class="card" [ngStyle]="{'background-color': quadro.corFundo}">
+            <mat-card-header>
+              <mat-card-title [ngStyle]="{'color': quadro.corTexto}">{{quadro.titulo}}</mat-card-title>
+            </mat-card-header>
+            <mat-card-actions class="actions">
+              <button mat-mini-fab color="warn" (click)="onDelete(i)">
+                <mat-icon>delete</mat-icon>
+              </button>
+              <button mat-mini-fab color="primary" routerLink="/board/{{quadro.id}}">
+                <mat-icon>remove_red_eye</mat-icon>
+              </button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
+      </div>
+    </main>
+  </div>
+</mat-drawer-container>
