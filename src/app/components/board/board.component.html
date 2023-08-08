@@ -1,0 +1,72 @@
+<mat-drawer-container class="example-container-side" autosize [ngStyle]="{'background-color': quadro.corFundo}">
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <div class="side-buttons">
+      <button mat-raised-button color="primary" routerLink="/home">Quadros</button>
+      <button mat-raised-button color="primary" routerLink="/favorite">Favoritos</button>
+      <button mat-raised-button color="primary" routerLink="/shared">Compartilhados</button>
+      <button mat-raised-button color="primary" routerLink="/collection">Coleções</button>
+    </div>
+  </mat-drawer>
+  <app-nav (change)="drawer.toggle()"></app-nav>
+  <div class="example-sidenav-content">
+    <main>
+      <h1 [ngStyle]="{'color': quadro.corTexto}">
+        {{quadro.titulo}}
+        <ng-container *ngIf="favorito; else unfavoriteButton">
+          <button class="star" (click)="unfavorite()" mat-mini-fab color="primary">
+            <mat-icon>star</mat-icon>
+          </button>
+        </ng-container>
+        <ng-template #unfavoriteButton>
+          <button class="star" (click)="favorite()" mat-mini-fab color="primary">
+            <mat-icon>star_border</mat-icon>
+          </button>
+        </ng-template>
+      </h1>
+      <div class="headerButtons">
+        <button mat-raised-button color="primary" [disabled]="!editavel" (click)="openDialogBoard()">
+          Editar quadro
+        </button>
+        <button mat-raised-button color="primary" [disabled]="!editavel" (click)="openDialogList()">
+          Criar lista
+        </button>
+        <button mat-mini-fab color="primary" [disabled]="!editavel" (click)="openDialogShare()">
+          <mat-icon>share</mat-icon>
+        </button>
+      </div>
+
+      <div cdkDropList [cdkDropListDisabled]="!editavel" cdkDropListOrientation="horizontal" class="container-list"
+        (cdkDropListDropped)="
+        dropList($event)">
+        <div class="example-container" cdkDropListGroup>
+          <div class="container-box-list" *ngFor="let lista of quadro.listas; let i = index" cdkDrag>
+            <div class="card-header">
+              <h2>{{lista.titulo}}</h2>
+              <div class="card-buttons">
+                <button mat-mini-fab color="warn" [disabled]="!editavel" (click)="removeList(i)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+                <button mat-mini-fab color="primary" [disabled]="!editavel" (click)="openDialogUpdateList(i)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+              </div>
+            </div>
+
+            <button mat-mini-fab color="primary" [disabled]="!editavel" (click)="openDialogTask(i)">
+              <mat-icon>add_circle</mat-icon>
+            </button>
+            <div class="example-list" cdkDropList [cdkDropListDisabled]="!editavel" [cdkDropListData]="lista.tarefas"
+              (cdkDropListDropped)="dropTask($event)">
+              <div class="example-box" *ngFor="let tarefa of lista.tarefas; let t = index" cdkDrag>
+                {{tarefa.conteudo}}
+                <button mat-mini-fab color="warn" [disabled]="!editavel" (click)="removeTask(i,t)">
+                  <mat-icon>clear</mat-icon>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</mat-drawer-container>
