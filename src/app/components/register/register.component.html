@@ -1,0 +1,29 @@
+<div class="container">
+  <form class="form" (submit)="onSubmit()">
+    <mat-form-field class="field">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput [formControl]="controlEmail" placeholder="Ex. pat@example.com">
+      <mat-error *ngIf="controlEmail.hasError('email') && !controlEmail.hasError('required')">
+        Insira um email valido.
+      </mat-error>
+      <mat-error *ngIf="controlEmail.hasError('required')">
+        Preencha o campo email.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="field">
+      <mat-label>Senha</mat-label>
+      <input type="password" matInput [formControl]="controlSenha" placeholder="Senha">
+      <mat-error *ngIf="controlSenha.hasError('required')">
+        Preencha o campo senha.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="field">
+      <mat-label>Nome</mat-label>
+      <input type="text" matInput [formControl]="controlNome" placeholder="Nome">
+      <mat-error *ngIf="controlNome.hasError('required')">
+        Preencha o campo nome.
+      </mat-error>
+    </mat-form-field>
+    <button mat-raised-button type="submit">Cadastrar</button>
+  </form>
+</div>
