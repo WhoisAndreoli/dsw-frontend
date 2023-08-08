@@ -1,0 +1,53 @@
+main {
+  /* background-color: green; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.container {
+  /* background-color: blueviolet; */
+  height: 80%;
+  width: 70%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.card {
+  min-width: 350px;
+  margin: 20px;
+}
+
+.actions {
+  display: flex;
+  justify-content: right;
+}
+
+button {
+  margin: 3px;
+}
+
+.example-container {
+  min-height: 100%;
+  background-color: white;
+}
+
+.example-sidenav-content {
+  background-color: transparent;
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+.side-buttons {
+  display: flex;
+  flex-direction: column;
+}
