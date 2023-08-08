@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-mdc-fab[disabled][disabled],
+.mat-mdc-mini-fab[disabled][disabled],
+.mat-mdc-raised-button[disabled][disabled] {
+  --mdc-fab-container-color: rgba(155, 155, 155, 0.12);
+  --mdc-fab-icon-color: rgba(0, 0, 0, 0.38);
+  --mat-mdc-fab-color: rgba(155, 155, 155, 0.38);
+  --mdc-protected-button-disabled-container-color: rgba(255, 255, 255, 0.12);
+  --mdc-protected-button-disabled-label-text-color: rgba(255, 255, 255, 0.38);
+}

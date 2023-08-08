@@ -1,0 +1,10 @@
+<div mat-dialog-content>
+  <p>Qual será o conteudo da tarefa?</p>
+  <mat-form-field>
+    <mat-label>Conteudo da tarefa</mat-label>
+    <input matInput [(ngModel)]="data.conteudo">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data.conteudo" cdkFocusInitial>Criar</button>
+</div>

@@ -1,0 +1,20 @@
+<div mat-dialog-content>
+  <p>Qual será o titulo do quadro?</p>
+  <mat-form-field>
+    <mat-label>Titulo do quadro</mat-label>
+    <input matInput [(ngModel)]="data.titulo">
+  </mat-form-field>
+  <p>Qual será a cor de fundos?</p>
+  <mat-form-field>
+    <mat-label>Cor de fundo</mat-label>
+    <input matInput type="color" [(ngModel)]="data.corFundo">
+  </mat-form-field>
+  <p>Qual será a cor do texto?</p>
+  <mat-form-field>
+    <mat-label>Cor do texto</mat-label>
+    <input matInput type="color" [(ngModel)]="data.corTexto">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Criar</button>
+</div>

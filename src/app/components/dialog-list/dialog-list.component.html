@@ -1,0 +1,10 @@
+<div mat-dialog-content>
+  <p>Qual será o titulo da lista?</p>
+  <mat-form-field>
+    <mat-label>Titulo da lista</mat-label>
+    <input matInput [(ngModel)]="data.titulo">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data.titulo" cdkFocusInitial>Criar</button>
+</div>
